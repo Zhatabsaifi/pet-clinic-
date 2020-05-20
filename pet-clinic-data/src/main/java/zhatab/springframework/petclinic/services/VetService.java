@@ -9,3 +9,5 @@ public interface VetService extends CrudService<Vet,Long>{
 //    Set<Vet> findAll();
     // use CrudService
 }
+
+
