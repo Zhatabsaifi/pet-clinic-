@@ -1,11 +1,11 @@
 package zhatab.springframework.petclinic.services.map;
 
 import zhatab.springframework.petclinic.model.Pet;
-import zhatab.springframework.petclinic.services.CrudService;
+import zhatab.springframework.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet,Long> implements CrudService<Pet,Long>{
+public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {

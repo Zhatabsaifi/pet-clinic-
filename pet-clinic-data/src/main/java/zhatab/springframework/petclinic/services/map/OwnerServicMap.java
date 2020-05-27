@@ -1,11 +1,11 @@
 package zhatab.springframework.petclinic.services.map;
 
 import zhatab.springframework.petclinic.model.Owner;
-import zhatab.springframework.petclinic.services.CrudService;
+import zhatab.springframework.petclinic.services.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServicMap extends AbstractMapService<Owner,Long> implements CrudService<Owner,Long> {
+public class OwnerServicMap extends AbstractMapService<Owner,Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {
        return super.findAll();
@@ -29,5 +29,10 @@ public class OwnerServicMap extends AbstractMapService<Owner,Long> implements Cr
     @Override
     public Owner findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
     }
 }
