@@ -1,10 +1,12 @@
 package zhatab.springframework.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import zhatab.springframework.petclinic.model.Vet;
 import zhatab.springframework.petclinic.services.VetService;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
     @Override
     public Set<Vet> findAll() {

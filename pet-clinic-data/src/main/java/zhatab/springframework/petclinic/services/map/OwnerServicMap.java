@@ -1,10 +1,12 @@
 package zhatab.springframework.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import zhatab.springframework.petclinic.model.Owner;
 import zhatab.springframework.petclinic.services.OwnerService;
 
 import java.util.Set;
 
+@Service
 public class OwnerServicMap extends AbstractMapService<Owner,Long> implements OwnerService {
     @Override
     public Set<Owner> findAll() {

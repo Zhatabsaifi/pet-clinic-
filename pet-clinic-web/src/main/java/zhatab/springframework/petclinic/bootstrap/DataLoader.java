@@ -6,17 +6,15 @@ import zhatab.springframework.petclinic.model.Owner;
 import zhatab.springframework.petclinic.model.Vet;
 import zhatab.springframework.petclinic.services.OwnerService;
 import zhatab.springframework.petclinic.services.VetService;
-import zhatab.springframework.petclinic.services.map.OwnerServicMap;
-import zhatab.springframework.petclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        ownerService = new OwnerServicMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
