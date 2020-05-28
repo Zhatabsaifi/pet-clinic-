@@ -18,6 +18,7 @@ public class OwnerServicMap extends AbstractMapService<Owner,Long> implements Ow
         super.deleteById(id);
     }
 
+
     @Override
     public void delete(Owner object) {
         super.delete(object);
