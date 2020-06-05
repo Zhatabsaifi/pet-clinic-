@@ -1,11 +1,12 @@
 package zhatab.springframework.petclinic.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person{
 
     private  String address,city,telephone;
-    private Set<Pet> petSet;
+    private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {
         return address;
@@ -31,11 +32,11 @@ public class Owner extends Person{
         this.telephone = telephone;
     }
 
-    public Set<Pet> getPetSet() {
-        return petSet;
+    public Set<Pet> getPets() {
+        return pets;
     }
 
-    public void setPetSet(Set<Pet> petSet) {
-        this.petSet = petSet;
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
     }
 }

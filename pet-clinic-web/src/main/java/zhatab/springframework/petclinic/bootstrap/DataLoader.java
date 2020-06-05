@@ -3,11 +3,14 @@ package zhatab.springframework.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import zhatab.springframework.petclinic.model.Owner;
+import zhatab.springframework.petclinic.model.Pet;
 import zhatab.springframework.petclinic.model.PetType;
 import zhatab.springframework.petclinic.model.Vet;
 import zhatab.springframework.petclinic.services.OwnerService;
 import zhatab.springframework.petclinic.services.PetTypeService;
 import zhatab.springframework.petclinic.services.VetService;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -35,12 +38,32 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Zhatab");
         owner1.setLastName("Saifi");
+        owner1.setAddress("Badsha nagar ");
+        owner1.setCity("Dadri");
+        owner1.setTelephone("8010311757");
+
+        Pet zhatabPet = new Pet();
+        zhatabPet.setPetType(saveDogPetType);
+        zhatabPet.setOwner(owner1);
+        zhatabPet.setBirthDate(LocalDate.now());
+        zhatabPet.setName("Rocky");
+        owner1.getPets().add(zhatabPet);
 
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Aftab");
         owner2.setLastName("Saifi");
+        owner2.setAddress("Bada Bazar ");
+        owner2.setCity("Dadri");
+        owner2.setTelephone("8278935754");
+
+        Pet aftabCat = new Pet();
+        aftabCat.setPetType(saveCatPetType);
+        aftabCat.setOwner(owner2);
+        aftabCat.setBirthDate(LocalDate.now());
+        aftabCat.setName("Tillu");
+        owner2.getPets().add(aftabCat);
 
         ownerService.save(owner2);
 
