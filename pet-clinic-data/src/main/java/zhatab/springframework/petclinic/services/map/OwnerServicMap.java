@@ -36,7 +36,6 @@ public class OwnerServicMap extends AbstractMapService<Owner,Long> implements Ow
         super.delete(object);
     }
 
-
     @Override
     public Owner save(Owner object) {
         if(object != null){

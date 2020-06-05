@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person{
-
     private  String address,city,telephone;
     private Set<Pet> pets = new HashSet<>();   // good to assign at initalize time // reduce the chance of exception whe you not insert anything and try to get function
 
