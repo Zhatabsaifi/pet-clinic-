@@ -1,13 +1,22 @@
 package zhatab.springframework.petclinic.services.map;
 
 import org.springframework.stereotype.Service;
+import zhatab.springframework.petclinic.model.Speciality;
 import zhatab.springframework.petclinic.model.Vet;
+import zhatab.springframework.petclinic.services.SpecialityService;
 import zhatab.springframework.petclinic.services.VetService;
 
 import java.util.Set;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
+
+    private final SpecialityService specialityService;
+
+    public VetServiceMap(SpecialityService specialityService) {
+        this.specialityService = specialityService;
+    }
+
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
@@ -23,9 +32,17 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetSe
         super.delete(object);
     }
 
-
     @Override
     public Vet save(Vet object) {
+        if(object.getSpecialities().size() > 0){
+            object.getSpecialities().forEach(speciality -> {
+                if(speciality.getId() == null){
+                    Speciality savedSpeciality = specialityService.save(speciality);   // run abstractMapService save and getNextId();
+                    // savedSpecialtiy is used to generate new id which provide to the object
+                    speciality.setId(savedSpeciality.getId());
+                }
+            });
+        }
         return super.save(object);
     }
 

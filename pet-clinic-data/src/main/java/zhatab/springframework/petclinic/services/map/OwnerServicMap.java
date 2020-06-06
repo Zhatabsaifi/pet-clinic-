@@ -50,7 +50,8 @@ public class OwnerServicMap extends AbstractMapService<Owner,Long> implements Ow
                         throw new RuntimeException("Pet type is required");
                     }
                     if(pet.getId()== null){
-                        Pet savedPet = petService.save(pet);
+                        Pet savedPet = petService.save(pet);   // abstractMApService save method is run
+                        // savedPet is used to generate new id which provide to the pet object
                         pet.setId(savedPet.getId());
                     }
                 });
