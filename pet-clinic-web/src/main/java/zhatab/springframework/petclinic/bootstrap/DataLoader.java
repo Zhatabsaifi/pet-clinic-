@@ -3,10 +3,7 @@ package zhatab.springframework.petclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import zhatab.springframework.petclinic.model.*;
-import zhatab.springframework.petclinic.services.OwnerService;
-import zhatab.springframework.petclinic.services.PetTypeService;
-import zhatab.springframework.petclinic.services.SpecialityService;
-import zhatab.springframework.petclinic.services.VetService;
+import zhatab.springframework.petclinic.services.*;
 
 import java.time.LocalDate;
 
@@ -16,12 +13,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -86,7 +85,14 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(aftabCat);
+        catVisit.setDate(LocalDate.now());
+
+        visitService.save(catVisit);
+
         System.out.println("Loaded Owners.....");
+
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Detective ");

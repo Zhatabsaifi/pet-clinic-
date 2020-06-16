@@ -1,10 +1,12 @@
 package zhatab.springframework.petclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import zhatab.springframework.petclinic.model.Visit;
 import zhatab.springframework.petclinic.services.VisitService;
 
 import java.util.Set;
 
+@Service
 public class VisitMapService extends AbstractMapService<Visit,Long> implements VisitService {
 
     @Override
