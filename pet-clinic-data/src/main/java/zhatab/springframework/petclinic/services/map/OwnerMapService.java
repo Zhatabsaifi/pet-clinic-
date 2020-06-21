@@ -12,12 +12,12 @@ import java.util.Set;
 
 @Service
 @Profile({"default","map"})
-public class OwnerServicMap extends AbstractMapService<Owner,Long> implements OwnerService {
+public class OwnerMapService extends AbstractMapService<Owner,Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
     private final PetService petService;
 
-    public OwnerServicMap(PetTypeService petTypeService, PetService petService) {
+    public OwnerMapService(PetTypeService petTypeService, PetService petService) {
         this.petTypeService = petTypeService;
         this.petService = petService;
     }
@@ -71,6 +71,10 @@ public class OwnerServicMap extends AbstractMapService<Owner,Long> implements Ow
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return this.findAll()   //Set<Owner>
+                .stream()       // Stream<Owner>
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))      // Stream<Owner>
+                .findFirst()    // Optional<Owner>
+                .orElse(null);
     }
 }
